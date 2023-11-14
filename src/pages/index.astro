@@ -1,5 +1,6 @@
 ---
-import '@fontsource/poppins';
+import '@fontsource/poppins/200.css';
+import '@fontsource/poppins/500.css';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -9,13 +10,13 @@ import '@fontsource/poppins';
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta content="rhamburg.com" name="description"/>
 
-		<meta property="og:title" content="">
-		<meta property="og:type" content="">
-		<meta property="og:url" content="">
-		<meta property="og:image" content="">
+		<meta property="og:title" content="Rich Hamburg">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="http://rhamburg.com">
+		<meta property="og:image" content="http://rhamburg.com/icon.png">
 
 		<link rel="icon" href="/favicon.ico" sizes="any">
-		<link rel="icon" href="/icon.svg" type="image/svg+xml">
+		<link rel="icon" href="/logo.svg" type="image/svg+xml">
 		<link rel="apple-touch-icon" href="icon.png">
 
 		<link rel="manifest" href="/site.webmanifest">
@@ -24,112 +25,133 @@ import '@fontsource/poppins';
 		<title>(rh)amburg.com | creative.technology</title>
 	</head>
 	<body>
-		<div id="main">
-            <div id="content">
-                <section class="logo">
-                    <img class="rh" src="/logo.svg" alt="rhamburg logo" />
-                    <header>
-                        <h1>rich<em>hamburg</em></h1>
-                        <h2><em>rhamburg</em>.com</h2>
-                    </header>
-                </section>
-            </div>
-        </div>
+		<main>
+			<section class="logo">
+				<img class="rh" src="/logo.svg" alt="rhamburg logo" style="max-width: 200px;" />
+				<header>
+					<h1>rich<em>hamburg</em></h1>
+					<h2><em>rhamburg</em>.com</h2>
+				</header>
+			</section>
+		</main>
 	</body>
 </html>
 
 <style is:global>
+	:root {
+		--background-primary: oklch(0.33 0.02 270.93);
+		--background-stripe: oklch(0.28 0.01 272.96);
+		--primary-accent: oklch(0.68 0.17 42.02);
+	}
 	*,
 	*::before,
 	*::after {
 		box-sizing: border-box;
-	}
-	html,
-	body {
-		height: 100%;
 		margin: 0;
 	}
 
+	::selection {
+		background-color: var(--primary-accent);
+		color: #fff;
+	}
+	html {
+		color: #fff;
+		font-family: "Poppins", sans-serif;
+		font-size: 100%;
+		line-height: 1;
+	}
 	body {
-		background-color: #32353e;
+		background-color: var(--background-primary);
+		display: flex;
+		justify-content: center;
+		margin: 0;
 	}
-
-	#main {
-		bottom: 0;
-		border-right: #3e424c 1px solid;
+	main {
+		align-items: center;
+		background-color: var(--background-stripe);
+		border-right: rgb(255 255 255 / .1) 1px solid;
 		border-left: black 1px solid;
-		height: 100%;
-		margin: 0 auto;
-		min-width: 150px;
-		width: 25%;
-	}
-
-	#content {
-		background-color: #272930;
-		box-sizing: border-box;
-		height: 100%;
-		position: relative;
-		width: 100%;
+		display: flex;
+		justify-content: center;
+		height: 100vh;
+		width: clamp(150px, 25vw, 355px);
 	}
 
 	.logo {
-		color: #ffffff;
-		display: inline-block;
-		font-family: "Poppins", sans-serif;
-		font-size: 7px;
-		left: 50%;
-		margin-left: -15.25em;
-		margin-top: -3.125em;
-		position: absolute;
-		text-align: center;
-		top: 50%;
-		width: 30.5em;
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		font-weight: 200;
+		gap: 0.825rem;
+		justify-content: center;
 	}
 	.logo .rh {
-		float: left;
-		height: auto;
-		margin: 0 auto;
-		position: relative;
-		width: 8.65em;
-		fill: #bada55;
+		width: 65px;
 	}
-	@media screen and (max-width: 1024px) {
-		.logo .rh {
-			display: block;
-			float: none;
+
+	.logo header {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		font-weight: 200;
+		justify-content: center;
+	}
+	.logo header em {
+		font-style:normal;
+		font-weight: 500;
+	}
+	.logo header h1 {
+		font-size: 1.1rem;
+		font-weight: 200;
+		line-height: 1.5;
+		margin-block-start: 0.625
+	}
+	.logo header h2 {
+		color: var(--primary-accent);
+		font-size: .625rem;
+	}
+	.logo header h2 em {
+		color: #fff;
+	}
+
+	@media screen and (min-width: 1024px) {
+		.logo {
+			flex-direction: row;
+		}
+		.logo header {
+			align-items: flex-start;
 		}
 	}
-	.logo header {
+	#logo header {
 		font-size: 1em;
-		font-weight: 100;
+		font-weight: 200;
 		padding: 2em 0 2em 10em;
 		text-align: left;
 	}
-	.logo header h1 {
+	#logo header h1 {
 		font-size: 2.5em;
-		font-weight: 200;
 		margin: 0;
 	}
-	.logo header h1 em {
+	#logo header em {
 		font-style: normal;
 		font-weight: 500;
 	}
-	.logo header h2 {
+	#logo header h2 {
 		color: #ee6926;
 		font-size: 1.5em;
 		font-weight: 500;
 		line-height: 1.4em;
 		margin: 0;
 	}
-	.logo header h2 em {
+	#logo header h2 em {
 		color: #ffffff;
 		font-style: normal;
 	}
 	@media screen and (max-width: 1024px) {
-		.logo header {
+		#logo header {
 			display: inline-block;
 			padding-left: 0;
 			text-align: center;
 		}
 	}
-	</style>
+</style>
