@@ -1,0 +1,50 @@
+{
+	"name": "rhamburg.com",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/www",
+
+	"portsAttributes": {
+		"4321": {
+			"label": "Application",
+			"onAutoForward": "openPreview"
+		}
+	},
+
+	"forwardPorts": [4321],
+
+	"postCreateCommand": "pnpm install",
+	"waitFor": "postCreateCommand",
+	"postAttachCommand": "pnpm dev --host",
+	"mounts": [
+		"source=${localWorkspaceFolder}/www,target=/workspaces/${localWorkspaceFolderBasename}/www,type=bind,consistency=cached"
+	],
+
+	"customizations": {
+		"codespaces": {
+			"openFiles": ["src/pages/index.astro"]
+		},
+		"vscode": {
+			"extensions": [
+				"astro-build.astro-vscode",
+				"biomejs.biome",
+				"phoenisx.cssvar",
+				"editorconfig.editorconfig",
+				"eamodio.gitlens",
+				"visualstudioexptteam.vscodeintellicode",
+				"pkief.material-icon-theme",
+				"ahmadawais.shades-of-purple",
+				"yzhang.markdown-all-in-one",
+				"aaron-bond.better-comments"
+			],
+			"settings": {
+				"terminal.integration.fontFamily": "MesloLGS NF",
+				"workbench.colorTheme": "Shades of Purple",
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "biomejs.biome"
+			}
+		}
+	}
+}
