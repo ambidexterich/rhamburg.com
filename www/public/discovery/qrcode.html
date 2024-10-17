@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>QR Code</title>
+    </head>
+    <body>
+        <canvas id="qrcode"></canvas>
+        <script type="module">
+            import QRCode from 'qrcode';
+            const cvs = document.getElementById('qrcode');
+
+            QRCode.toCanvas(cvs, 'http://rhamburg.com', function (error) {
+                if (error) console.error(error);
+                console.log('success!');
+            });
+
+            const stage = document.getElementById('stage');
+            const qrcode = new QRCode(stage, {
+                text: 'http://rhamburg.com',
+                width: 200,
+                height: 200,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        </script>
+    </body>
+</html>

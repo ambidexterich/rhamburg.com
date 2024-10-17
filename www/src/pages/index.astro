@@ -1,17 +1,159 @@
 ---
+import "@fontsource/poppins/200.css";
+import "@fontsource/poppins/500.css";
+
 import SpeedInsights from "@vercel/speed-insights/astro";
+const protocol =
+	import.meta.env.VERCEL_ENV === "development" ? "http" : "https";
+const SITE_URL = `${protocol}://${import.meta.env.VERCEL_PROJECT_PRODUCTION_URL}`;
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>(rh)amburg.com | creative.technology</title>
+		<meta name="description" content="rhamburg.com - the culmination of 25 years of 'Coming Soon'" />
+		
+		<link rel="icon" href="/logo.svg" type="image/svg+xml">
+		<link rel="apple-touch-icon" href="icon.png">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<link rel="canonical" href={SITE_URL} />
+		
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#27292D">
+
+		<link rel="manifest" href="/site.webmanifest">
+
+		<meta property="og:title" content="Rich Hamburg">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content={SITE_URL}>
+		<meta property="og:image" content={`${SITE_URL}/icon.png`}>
+		<meta property="og:description" content="rhamburg.com - the culmination of 25 years of 'Coming Soon'">
+
+		<meta name="twitter:card" content="summary_large_image">
 	</head>
 	<body>
-		<SpeedInsights />
-		<h1>Astro</h1>
+		<SpeedInsights/>
+		<main>
+			<section class="logo">
+				<img class="rh" src="/logo.svg" alt="rhamburg logo" style="max-width: 200px;" />
+				<header>
+					<h1>rich<em>hamburg</em></h1>
+					<h2><em>rhamburg</em>.com</h2>
+				</header>
+				
+			</section>
+			
+		</main>
+		
 	</body>
 </html>
+
+<style is:global>
+	:root {
+		--background-primary: oklch(0.33 0.02 270.93);
+		--background-stripe: oklch(0.28 0.01 272.96);
+		--primary-accent: oklch(0.68 0.17 42.02);
+		--font-color: #fff;
+		--border-right: rgb(255 255 255 / .1);
+		--border-left: rgb(0 0 0 / 1);
+
+		--transition-animation: 0.3s ease-in-out;
+
+		
+
+
+	}
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+		margin: 0;
+	}
+
+	::selection {
+		background-color: var(--primary-accent);
+		color: #fff;
+	}
+	html {
+		color: var(--font-color);
+		font-family: "Poppins", sans-serif;
+		font-size: 100%;
+		line-height: 1;
+		transition: color var(--transition-animation);
+	}
+	body {
+		background-color: var(--background-primary);
+		display: flex;
+		justify-content: center;
+		margin: 0;
+		transition: background-color var(--transition-animation);
+	}
+	main {
+		align-items: center;
+		background-color: var(--background-stripe);
+		border-right: var(--border-right) 1px solid;
+		border-left: var(--border-left) 1px solid;
+		display: flex;
+		justify-content: center;
+		block-size: 100vh;
+		inline-size: clamp(150px, 25vw, 355px);
+		transition: background-color var(--transition-animation), border-color var(--transition-animation);
+	}
+
+	
+	
+	
+
+	.logo {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		font-weight: 200;
+		gap: 0.825rem;
+		justify-content: center;
+	}
+	.logo .rh {
+		inline-size: 65px;
+	}
+
+	.logo header {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		font-weight: 200;
+		justify-content: center;
+	}
+	.logo header em {
+		font-style:normal;
+		font-weight: 500;
+	}
+	.logo header h1 {
+		font-size: 1.1rem;
+		font-weight: 200;
+		line-height: 1.5;
+	}
+	.logo header h2 {
+		color: var(--primary-accent);
+		font-size: .625rem;
+	}
+	.logo header h2 em {
+		color: var(--font-color);
+
+	}
+
+
+	@media screen and (min-width: 1024px) {
+		.logo {
+			flex-direction: row;
+		}
+		.logo header {
+			align-items: flex-start;
+		}
+		.logo header h1 {
+			margin-block-start: 0.625rem;
+		}
+	}
+</style>
