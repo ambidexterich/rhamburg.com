@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button data-next="Pause">Play</button>
+    <script>
+        var noise = {
+            volume: 0.05, // 0 - 1
+            fadeIn: 2.5, // time in seconds
+            fadeOut: 1.3, // time in seconds
+        };
+        const audioContext = new AudioContext();
+        const createNoise = (track) => {
+
+            const bufferSize = 2 * audioContext.sampleRate;
+            const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const output = noiseBuffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                output[i] = Math.random() * 2 - 1;
+            }
+            
+            track.audioSource.buffer = noiseBuffer;
+        }
+
+        const stopNoise = (track) => {
+            if (track.audioSource)
+                track.audioSource.stop();
+        }
+
+        const buildTrack = track => {
+            track.audioSource = audioContext.createBufferSource();
+            track.gainNode = audioContext.createGain();
+            track.audioSource.connect(track.gainNode);
+            track.gainNode.connect(audioContext.destination);
+            track.canFade = true;
+        }
+        const setGain = track => {
+            track.value = track.volume >= 0 ? track.volume : 0.5;
+            track.fadeIn = 0.5;
+            track.gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            track.gainNode.gain.linearRampToValueAtTime(track.volume / 4, audioContext.currentTime + track.fadeIn / 2);
+            track.gainNode.gain.linearRampToValueAtTime(track.volume, audioContext.currentTime + track.fadeIn);
+        }
+        const playNoise = track => {
+            //stopNoise(track);
+            buildTrack(track);
+            createNoise(track);
+            setGain(track);
+            track.audioSource.loop = true;
+            track.audioSource.start();
+        }
+
+        document.querySelector('button').addEventListener('click', function () {
+            const nextState = this.getAttribute('data-next');
+            this.setAttribute('data-next', this.textContent);
+            this.textContent = nextState;
+            if (nextState === 'Pause') {
+                playNoise(noise);
+            } else {
+                stopNoise(noise);
+            }
+        });
+    </script>
+</body>
+</html>
