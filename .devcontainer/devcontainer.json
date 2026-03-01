@@ -29,7 +29,8 @@
 		"vscode": {
 			"extensions": [
 				"astro-build.astro-vscode",
-				"biomejs.biome",
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
 				"phoenisx.cssvar",
 				"editorconfig.editorconfig",
 				"eamodio.gitlens",
@@ -43,7 +44,7 @@
 				"terminal.integration.fontFamily": "MesloLGS NF",
 				"workbench.colorTheme": "Shades of Purple",
 				"editor.formatOnSave": true,
-				"editor.defaultFormatter": "biomejs.biome"
+				"editor.defaultFormatter": "esbenp.prettier-vscode"
 			}
 		}
 	}
