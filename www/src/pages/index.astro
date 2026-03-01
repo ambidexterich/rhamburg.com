@@ -11,28 +11,27 @@ const SITE_URL = `${protocol}://${import.meta.env.VERCEL_PROJECT_PRODUCTION_URL}
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>(rh)amburg.com | creative.technology</title>
 		<meta name="description" content="rhamburg.com - the culmination of 25 years of 'Coming Soon'" />
 		
-		<link rel="icon" href="/logo.svg" type="image/svg+xml">
-		<link rel="apple-touch-icon" href="icon.png">
+		<link rel="icon" href="/logo.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="icon.png" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href={SITE_URL} />
 		
-		<meta name="color-scheme" content="dark light">
-		<meta name="theme-color" content="#27292D">
+		<meta name="color-scheme" content="dark light" />
+		<meta name="theme-color" content="#27292D" />
 
-		<link rel="manifest" href="/site.webmanifest">
+		<link rel="manifest" href="/site.webmanifest" />
 
-		<meta property="og:title" content="Rich Hamburg">
-		<meta property="og:type" content="website">
-		<meta property="og:url" content={SITE_URL}>
-		<meta property="og:image" content={`${SITE_URL}/icon.png`}>
-		<meta property="og:description" content="rhamburg.com - the culmination of 25 years of 'Coming Soon'">
+		<meta property="og:title" content="Rich Hamburg" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={SITE_URL} />
+		<meta property="og:image" content={`${SITE_URL}/icon.png`} />
+		<meta property="og:description" content="rhamburg.com - the culmination of 25 years of 'Coming Soon'" />
 
-		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:card" content="summary_large_image" />
 	</head>
 	<body>
 		<SpeedInsights/>
@@ -61,10 +60,6 @@ const SITE_URL = `${protocol}://${import.meta.env.VERCEL_PROJECT_PRODUCTION_URL}
 		--border-left: rgb(0 0 0 / 1);
 
 		--transition-animation: 0.3s ease-in-out;
-
-		
-
-
 	}
 	*,
 	*::before,
@@ -72,7 +67,6 @@ const SITE_URL = `${protocol}://${import.meta.env.VERCEL_PROJECT_PRODUCTION_URL}
 		box-sizing: border-box;
 		margin: 0;
 	}
-
 	::selection {
 		background-color: var(--primary-accent);
 		color: #fff;
@@ -102,11 +96,6 @@ const SITE_URL = `${protocol}://${import.meta.env.VERCEL_PROJECT_PRODUCTION_URL}
 		inline-size: clamp(150px, 25vw, 355px);
 		transition: background-color var(--transition-animation), border-color var(--transition-animation);
 	}
-
-	
-	
-	
-
 	.logo {
 		align-items: center;
 		display: flex;
@@ -141,10 +130,7 @@ const SITE_URL = `${protocol}://${import.meta.env.VERCEL_PROJECT_PRODUCTION_URL}
 	}
 	.logo header h2 em {
 		color: var(--font-color);
-
 	}
-
-
 	@media screen and (min-width: 1024px) {
 		.logo {
 			flex-direction: row;
