@@ -4,7 +4,7 @@
 		"dockerfile": "Dockerfile"
 	},
 
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}/www",
 
 	"portsAttributes": {
 		"4321": {
@@ -19,7 +19,7 @@
 	"waitFor": "postCreateCommand",
 	"postAttachCommand": "pnpm dev --host",
 	"mounts": [
-		"source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached"
+		"source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename}/www,type=bind,consistency=cached"
 	],
 
 	"customizations": {
